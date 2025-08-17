@@ -3,9 +3,8 @@
 @{
     ViewData["Title"] = "Student Management System";
 }
-<h1>Student Management System</h1>
+<h4>Available Students</h4>
 
-<h4>Total Student count (using LINQ): @Model.Count()</h4>
 
 
 <div >
@@ -26,8 +25,8 @@
     </form>
 </div>
 
-<table class="table">
-    <thead>
+<table class="table  table-striped mt-4">
+    <thead class="table-primary">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
@@ -60,14 +59,16 @@
                 @Html.DisplayFor(modelItem => item.Age)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning"><i class="bi bi-pencil-square"></i> Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="bi bi-eye-fill"></i> Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger"><i class="bi bi-trash3-fill"></i> Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<h6>Total Student count (using LINQ): @Model.Count()</h6>
+
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
 </p>

@@ -1,10 +1,10 @@
 ﻿@model StudentManagement.Models.Entities.StudentEntity
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Student";
 }
 
-<h1>Edit</h1>
+<h1>Edit Student Information</h1>
 
 <h4>StudentEntity</h4>
 <hr />
@@ -35,14 +35,12 @@
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-danger">Cancel</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
