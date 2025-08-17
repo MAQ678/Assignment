@@ -1,14 +1,31 @@
 ﻿@model IEnumerable<StudentManagement.Models.Entities.StudentEntity>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Student Management System";
 }
+<h1>Student Management System</h1>
 
-<h1>Index</h1>
+<h4>Total Student count (using LINQ): @Model.Count()</h4>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
+<div >
+    <form method="get" class="row g-4 mb-2">
+        <div class="col-md-5">
+            @* <label class="form-label">Search Students</label> *@
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="bi bi-search"></i>
+                </span>
+                <input type="text" name="Name" class="form-control" placeholder="Search by Student Name..." />
+            </div>
+        </div>
+        <div class="col-md-2">
+            @* <label class="form-label">Click to Search</label> *@
+            <button type="submit" class="btn btn-primary w-100">Search</button>
+        </div>
+    </form>
+</div>
+
 <table class="table">
     <thead>
         <tr>
@@ -51,3 +68,6 @@
 }
     </tbody>
 </table>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>

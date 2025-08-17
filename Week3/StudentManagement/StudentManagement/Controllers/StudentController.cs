@@ -2,22 +2,29 @@
 using Microsoft.EntityFrameworkCore;
 using StudentManagement.Data;
 using StudentManagement.Models.Entities;
+using StudentManagement.Services;
+using StudentManagement.Services.Models;
 
-namespace StudentManagement
+namespace StudentManagement.Controllers
 {
     public class StudentController : Controller
     {
         private readonly StudentDbContext _context;
-
-        public StudentController(StudentDbContext context)
+        private readonly IStudentService studentService;
+        public StudentController(StudentDbContext context, IStudentService studentService)
         {
             _context = context;
+            this.studentService = studentService;
         }
 
         // GET: Student
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index([FromQuery] FilterStudentModel filter)
         {
-            return View(await _context.Students.ToListAsync());
+            filter ??= new FilterStudentModel();
+            filter.Age = 18; // Default age filter
+
+            var students = await studentService.GetFilteredStudentsAsync(filter);
+            return View(students);
         }
 
         // GET: Student/Details/5
