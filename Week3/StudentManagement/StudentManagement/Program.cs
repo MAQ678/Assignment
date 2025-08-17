@@ -1,4 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using StudentManagement.Data.UnitOfWork;
+using StudentManagement.Repositories.Implementations;
+using StudentManagement.Repositories.Interfaces;
+using StudentManagement.Services;
 
 namespace StudentManagement
 {
@@ -13,6 +17,10 @@ namespace StudentManagement
 
             builder.Services.AddDbContext<Data.StudentDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<IStudentService, StudentService>();
 
             var app = builder.Build();
 

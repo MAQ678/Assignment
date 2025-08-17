@@ -6,10 +6,10 @@ namespace StudentManagement.Data.UnitOfWork
     {
         private readonly StudentDbContext _context;
 
-        public IStudentRepository ProductRepository { get; }
-        public UnitOfWork(IStudentRepository productRepository, StudentDbContext context)
+        public IStudentRepository StudentRepository { get; }
+        public UnitOfWork(IStudentRepository studentRepository, StudentDbContext context)
         {
-            ProductRepository = productRepository;
+            StudentRepository = studentRepository;
             _context = context;
         }
 

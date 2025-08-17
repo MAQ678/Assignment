@@ -4,7 +4,7 @@ namespace StudentManagement.Data.UnitOfWork
 {
     public interface IUnitOfWork : IDisposable
     {
-        IStudentRepository ProductRepository { get; }
+        IStudentRepository StudentRepository { get; }
         Task<int> SaveAsync();
     }
 }
